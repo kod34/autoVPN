@@ -5,4 +5,4 @@ This is a program that automates the connection to one of vpnbook's free ovpn bu
   
 ## Usage  
   
-python3 vpnbook.py
+python3 autovpn.py
