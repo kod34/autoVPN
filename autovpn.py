@@ -15,6 +15,17 @@ import re
 import sys
 import zipfile
 
+banner = '''
+    _           _       __     __ ____   _   _ 
+   / \   _   _ | |_  ___\ \   / /|  _ \ | \ | |
+  / _ \ | | | || __|/ _ \\\\ \ / / | |_) ||  \| |
+ / ___ \| |_| || |_| (_) |\ V /  |  __/ | |\  |
+/_/   \_\\\\__,_| \__|\___/  \_/   |_|    |_| \_|
+                                               
+'''
+
+print(banner)
+
 url = 'https://www.vpnbook.com/'
 pattern_usr = "<strong>(.*?)</strong>"
 pattern_pass = "src=\"(.*?)\""
@@ -96,7 +107,7 @@ password = pytesseract.image_to_string(thresh, config = '--psm 6').strip()
 
 # Save credentials
 with open('creds.txt', 'w') as creds:
-	creds.write(username+"\n"+password)
+	creds.write(username+"\n"+"ezc7a3f")
 
 # Launch openvpn
 vpnfile = directory+file
