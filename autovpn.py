@@ -107,7 +107,7 @@ password = pytesseract.image_to_string(thresh, config = '--psm 6').strip()
 
 # Save credentials
 with open('creds.txt', 'w') as creds:
-	creds.write(username+"\n"+"ezc7a3f")
+	creds.write(username+"\n"+password)
 
 # Launch openvpn
 vpnfile = directory+file
