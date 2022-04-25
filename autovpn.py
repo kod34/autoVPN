@@ -37,8 +37,8 @@ c = 1
 dict_files ={}
 
 # Create directories
-os.makedirs('pass_dumps/', exist_ok=True)
-os.makedirs('bundles/', exist_ok=True)
+os.makedirs('/tmp/pass_dumps/', exist_ok=True)
+os.makedirs('/tmp/bundles/', exist_ok=True)
 
 
 # Get list elements from source code
@@ -62,11 +62,11 @@ except ValueError:
 # Download bundle
 bundle_url = url+bundle
 file_name = bundle_url.split('/')[-1]
-urllib.request.urlretrieve(bundle_url, 'bundles/'+file_name)
+urllib.request.urlretrieve(bundle_url, '/tmp/bundles/'+file_name)
 
 # Unzip file
-directory = 'bundles/'+file_name.split('.zip')[0]+'/'
-with zipfile.ZipFile('bundles/'+file_name, 'r') as zip_ref:
+directory = '/tmp/bundles/'+file_name.split('.zip')[0]+'/'
+with zipfile.ZipFile('/tmp/bundles/'+file_name, 'r') as zip_ref:
 	zip_ref.extractall(directory)
 
 # Get vpn file
@@ -90,7 +90,7 @@ pass_url_2 = re.search(pattern_pass, str(elems[-2:][1])).group(1)
 # Save image
 pass_url = url+pass_url_2.replace(" ","%20")
 pass_img = urllib.request.urlopen(pass_url).read()
-with open('pass_dumps/pass.png', 'wb') as passfile:
+with open('/tmp/pass_dumps/pass.png', 'wb') as passfile:
 	passfile.write(pass_img)
 
 
@@ -102,7 +102,7 @@ with open('pass_dumps/pass.png', 'wb') as passfile:
 # # Get password
 # password = pytesseract.image_to_string(thresh, config = '--psm 6').strip()
 
-img = Image.open('pass_dumps/pass.png')
+img = Image.open('/tmp/pass_dumps/pass.png')
 img.show()
 
 try:
@@ -111,9 +111,9 @@ except ValueError:
     
 	sys.exit(1)
 # Save credentials
-with open('creds.txt', 'w') as creds:
+with open('/tmp/creds.txt', 'w') as creds:
 	creds.write(username+"\n"+password)
 
 # Launch openvpn
 vpnfile = directory+file
-subprocess.Popen(['xterm', '-T', 'OpenVPN: '+str(os.path.splitext(file)[0]), '-geometry', '110x24+0+0', '-hold', '-e', 'sudo', 'openvpn', '--config', vpnfile, '--auth-user-pass', 'creds.txt'])
+subprocess.Popen(['xterm', '-T', 'OpenVPN: '+str(os.path.splitext(file)[0]), '-geometry', '110x24+0+0', '-hold', '-e', 'sudo', 'openvpn', '--config', vpnfile, '--auth-user-pass', '/tmp/creds.txt'])
