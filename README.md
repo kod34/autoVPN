@@ -1,4 +1,4 @@
-<h3 align="center">autoVPN</h3>
+<h1 align="center">autoVPN</h1>
 
 <p align="center"> This is a program that automates the connection to one of vpnbook's free ovpn bundles.  
     <br> 
