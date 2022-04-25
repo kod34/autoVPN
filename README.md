@@ -25,6 +25,7 @@ Linux
 
 
 ```
+git clone https://github.com/kod34/autoVPN
 cd autoVPN
 chmod +x install.sh
 ./install.sh
