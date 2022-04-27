@@ -116,4 +116,4 @@ with open('/tmp/creds.txt', 'w') as creds:
 
 # Launch openvpn
 vpnfile = directory+file
-subprocess.Popen(['xterm', '-T', 'OpenVPN: '+str(os.path.splitext(file)[0]), '-geometry', '110x24+0+0', '-hold', '-e', 'sudo', 'openvpn', '--config', vpnfile, '--auth-user-pass', '/tmp/creds.txt'])
+subprocess.call(['sudo', 'openvpn', '--config', vpnfile, '--auth-user-pass', '/tmp/creds.txt'])
