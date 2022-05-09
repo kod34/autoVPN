@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-import cv2
-import pytesseract
 from io import BytesIO
 from PIL import Image
 import subprocess
